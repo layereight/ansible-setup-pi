@@ -1,0 +1,2 @@
+[pis]
+my_pi ansible_host=192.168.10.33 ansible_user=pi ansible_ssh_pass=raspberry

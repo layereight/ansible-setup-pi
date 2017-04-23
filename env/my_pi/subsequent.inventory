@@ -1,0 +1,2 @@
+[pis]
+my_pi ansible_host=192.168.10.6 ansible_user=stefan

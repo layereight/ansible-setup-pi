@@ -1,0 +1,71 @@
+---
+#
+# typical run:
+#
+# ansible-playbook -i env/<ENVIRONMENT>/<INVENTORY> setup-pi.yml
+#
+
+#
+# basic user and network setup
+#
+- name: Raspberry Pi - basic user and network setup
+  hosts: pis
+  become: yes
+
+  roles:
+
+    # create a new user
+    - name: franklinkim.users
+      tags: [ "users" ]
+
+    # add new user to sudoers
+    - name: franklinkim.sudo
+      tags: [ "users" ]
+
+    # configure wpa_supplicant
+    - name: layereight.wifi
+      tags: [ "network", "wifi" ]
+
+    # configure network
+    - name: layereight.interfaces
+      tags: [ "network", "interfaces" ]
+
+#
+# further setup using new user and network config
+#
+- name: Raspberry Pi - further setup
+  hosts: pis
+  become: yes
+
+  vars:
+    ansible_host: "{{ setup_pi_address }}"
+    ansible_user: "{{ setup_pi_username }}"
+
+  roles:
+
+    # remove existing users
+    - name: franklinkim.users
+      tags: [ "users" ]
+      users: []
+      users_remove:
+        - "pi"
+
+    # set hostname
+    - name: holms.fqdn
+      tags: [ "hostname" ]
+
+    # setup keyboard layout
+    - name: gantsign.keyboard
+      tags: [ "keyboard" ]
+
+    # setup locale
+    - name: knopki.locale
+      tags: [ "locale" ]
+
+    # setup timezone
+    - name: layereight.timezone
+      tags: [ "timezone" ]
+
+    # reboot
+    - name: GROG.reboot
+      tags: [ "reboot" ]

@@ -1,0 +1,40 @@
+---
+
+# name of the user we want to create
+setup_pi_username: "stefan"
+
+
+# role: franklinkim.users
+users:
+  - username: "{{ setup_pi_username }}"
+    password: "ndCG1EDIgMaVk" # (a hash created with: mkpasswd)
+    authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAkkcokE40K2MEtONTZOde10rpqaBcFN/hEk8eBY2waiVOaYzGdC9RS3aTN2uwRwH31kh3/ciX4jVUtfNGBfvv4FAgOYAvHv/DpgnWgpWSmn/YClZoFIP+23Ex4CoumS5T98SHbU/PDPRxGE24GxjY9R0y4Jvvi+qofMbgWplo9Yeaa+FLEN5F2najrVbIEI9jLBoa1qnh7gP1Z5KTDdw0cIsCL40oh3iuX1MX9GxrU7U30WghiuDHSP81E7/lnKQ9XtCuoaGSqagQzkbeGDs0PTQq2doL6Rv9fK89m4hLXOp9EIacdLf6eVXSZuZSWTNvP1bsVaBWReP32bOCuTeFWQ== stefan@elbarto"
+
+# role: franklinkim.sudo
+sudo_users:
+  - name: "{{ setup_pi_username }}"
+    nopasswd: yes
+
+# role: layereight.wifi
+wifi_ssid: "my_wifi_name"
+wifi_psk: "my_wifi_password"
+
+# role: gantsign.keyboard
+keyboard_model: "pc105"
+keyboard_layout: "us,de"
+keyboard_variant: "altgr-intl"
+keyboard_options: "grp:alt_shift_toggle"
+
+# role: knopki.locale
+locale_lang: "en_US.UTF-8"
+
+# role: layereight.timezone
+timezone: "Europe/Berlin"
+
+# role: GROG.reboot
+reboot_wait: yes
+reboot_wait_host: "{{ ansible_host }}"
+reboot_wait_port: 22
+reboot_interval: yes
+reboot_interval_seconds: 3

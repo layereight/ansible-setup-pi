@@ -1,0 +1,18 @@
+---
+
+setup_pi_address: 192.168.10.6
+
+# role: interfaces
+interfaces_ether_interfaces:
+  - device: eth0
+    bootproto: static
+    address: "{{ setup_pi_address }}"
+    netmask: 255.255.255.0
+    network: 192.168.10.0
+    broadcast: 192.168.10.255
+    gateway: 192.168.10.1
+    dnsnameservers: 192.168.10.1
+# if you have a Raspberry Pi 3 or USB wifi dongle
+  - device: wlan0
+    bootproto: dhcp
+    wpaconf: /etc/wpa_supplicant/wpa_supplicant.conf
