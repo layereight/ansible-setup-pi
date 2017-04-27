@@ -19,6 +19,7 @@ sudo_users:
 # role: layereight.wifi
 wifi_ssid: "my_wifi_name"
 wifi_psk: "my_wifi_password"
+wifi_control_interface_access_group: "netdev"
 
 # role: gantsign.keyboard
 keyboard_model: "pc105"
