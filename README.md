@@ -14,7 +14,7 @@ An Ansible playbook for the basic Raspberry Pi setup. It gathers some roles from
 
 * Ansible (minimum version 2.2) installed on your local machine
 * Raspberry Pi with Raspbian OS
-* network access to the Raspberry Pi and sshd enabled
+* network access to the Raspberry Pi and [sshd enabled](https://layereight.de/raspberry-pi/2017/02/28/ssh-headless-Raspberry-Pi.html)
 * a user with sudo permissions
 
 ## How to run the playbook
