@@ -17,6 +17,7 @@ sudo_users:
     nopasswd: yes
 
 # role: layereight.wifi
+wifi_enabled: true
 wifi_ssid: "my_wifi_name"
 wifi_psk: "my_wifi_password"
 wifi_control_interface_access_group: "netdev"

@@ -25,6 +25,7 @@
     # configure wpa_supplicant
     - name: layereight.wifi
       tags: [ "network", "wifi" ]
+      when: wifi_enabled == true
 
     # configure network
     - name: layereight.interfaces
